@@ -1,0 +1,67 @@
+server:
+  port: 8882
+
+spring:
+  application:
+    name: foodcommendbackend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #    url: jdbc:mysql://localhost:3306/inventory_manage?useUnicode=true&useSSL=false&characterEncoding=utf8
+    #    url: jdbc:mysql://47.99.186.220:3306/inventory_manage?useUnicode=true&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/food_comment?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:123456}
+
+
+#mybatis
+mybatis-plus:
+  mapper-locations: mapper/*Mapper.xml
+  #
+  type-aliases-package: com.sys.foodcommentbackend.entity
+    #global-config:
+    #????????  0:"?????ID????", 1:"???????ID",2:"???¦·?ID (????????¦·?ID)", 3:"???¦·?ID UUID";
+    #id-type: 0
+    #??¦Â??? 0:"?????§Ø?",1:"?? NULL ?§Ø?"),2:"????§Ø?"
+    #field-strategy: 2
+    #???????????
+    #db-column-underline: true
+    #???mapper ????????
+    #refresh-mapper: true
+    #??????§Õ????????
+    #capital-mode: true
+    #???§ß???????????
+    #key-generator: com.baomidou.springboot.xxx
+    #??????????
+    #logic-delete-value: -1
+  #logic-not-delete-value: 0
+  #????????????????
+  #meta-object-handler: com.baomidou.springboot.xxx
+  #?????SQL?????
+  #sql-injector: com.baomidou.mybatisplus.dao.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+
+dcs:
+  jwtKey: 66a874772c8965474a8332e3628bc473
+  anonymous:
+    - "/user/login"
+    - "/user/create"
+    - "/question/getQuestions"
+    - "/answer/getAnswers"
+    - "/question/getDetail/{questionId}"
+    - "/question/getHot"
+    - "/question/getHotToday"
+    - "/question/getHotTotal"
+    # Swagger
+    - "/swagger*"
+    #- "/swagger-resources/**"
+    - "/v2/api-docs"
+    - "/swagger-ui.html"
+    - "/swagger/**"
+    - "/app/**"
+
+
+
